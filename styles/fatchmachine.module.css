@@ -1,0 +1,27 @@
+.name{
+    font-size: 2rem;
+}
+.list{
+    list-style: none;
+    padding: 0;
+    margin-top: 15px;
+}
+
+.img{
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.simulate{
+    position: absolute;
+    text-align: center;
+    display:none;
+    
+}
+
+.img:hover .simulate {
+    display: block;
+  }

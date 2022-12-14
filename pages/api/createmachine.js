@@ -10,7 +10,7 @@ export default async function handler(request, response) {
     price:request.query.price,
     workingtime:worktime,
     status:"idle",
-    create_time_stamp:(new Date()),
+    create_time_stamp: (new Date())
    }
 
     const { database } = await connectToDatabase();
@@ -22,7 +22,8 @@ export default async function handler(request, response) {
     || checkExist.length>0
     || request.headers.secret_key != process.env.SECRET_KEY
       ) {
-      response.end();
+      response.end("Welcome to my laundry api. This is private api. Thank you");
+      return
     }
    
     else{
@@ -32,8 +33,4 @@ export default async function handler(request, response) {
     
     }
     
-  
-    
-
-
 }

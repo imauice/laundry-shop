@@ -23,7 +23,7 @@ export default async function handler(request, response) {
             const stoptime = (new Date());
         const result = await collection.updateOne({ id: request.query.machine_id }, {
             $set: {
-                status: "busy",
+                status: "idle",
                 starttime: "",
                 stoptime:stoptime
             },

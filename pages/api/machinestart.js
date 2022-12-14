@@ -1,5 +1,6 @@
 import { connectToDatabase } from "../../lib/mongodb";
 
+
 export default async function handler(request, response) {
 
     const { database } = await connectToDatabase();
@@ -37,8 +38,15 @@ export default async function handler(request, response) {
 
             //machine stop process
             console.log("machine: ",request.query.machine_id," stopped");
+            var requestOptions = {
+                method: 'POST',
+                headers: { "secret_key": `${process.env.SECRET_KEY}` },
+                redirect: 'follow'
+              };
+          
+              fetch(`/api/machinestop?machine_id=${request.query.machine_id}`, requestOptions)
 
-        }, machine[0].workingtime);
+        }, ((machine[0].workingtime)-60000));
 
         response.status(200).json(result);
     }

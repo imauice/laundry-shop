@@ -1,0 +1,16 @@
+.strip{
+    font-family: 'Bowlby One SC', cursive;
+    text-align: center;
+    color: white;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    min-height: 20vh;
+    width: 100%;
+    background-color: #0099ff;
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+
+
+}

@@ -1,14 +1,11 @@
 // Next.js API route support: https://nextjs.org/docs/api-routes/introduction
 import type { NextApiRequest, NextApiResponse } from 'next'
 
-type Data = {
-  name: string
-}
+
 
 export default function handler(
   req: NextApiRequest,
-  res: NextApiResponse<Data>
+  res: NextApiResponse<String>
 ) {
-  res.status(200).json({ name: 'John Doe' })
-  console.log(process.env.DATABASE);
+  res.status(200).send("welcome to my laundry shop api")
 }

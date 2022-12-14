@@ -1,0 +1,34 @@
+.ads {
+    width: 100%;
+
+    font-family: 'Coiny', cursive;
+    display: flex;
+    min-height: 50vh;
+    flex-direction: column;
+    justify-content: center;
+    align-self: center;
+ 
+
+
+}
+.adscontent{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: fit-content;
+    margin: auto;
+    max-width: 450px;
+}
+
+.h2 {
+    font-family: 'Coiny', cursive;
+    font-size: 3rem;
+    margin-top: 3rem;
+    margin-bottom: 3rem;
+}
+
+.h4 {
+    margin-top: 3rem;
+    font-family: 'Coiny', cursive;
+    color: #0099FF;
+}
