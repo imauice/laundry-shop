@@ -39,11 +39,34 @@ export default async function handler(request:NextApiRequest, response:NextApiRe
             },
             $currentDate: { lastModified: true }
         });
-        
+
+        const machine_id = request.query.machine_id ;
+        //send line message
+        setTimeout(() => {
+            
+            var requestOptions: RequestInit = {
+              method: 'POST',
+              headers: { "secret_key": `${process.env.NEXT_SECRET_KEY}` },
+              redirect: 'follow'
+            };
+
+            const message = `${machine_id} will finish in 1 minute`
+            const url = `https://laundry-shop-nine.vercel.app/api/linemessage?message=${message}`
+         
+            fetch(url, requestOptions).then((res)=>{
+              
+                if(res.statusText == 'OK'){
+                    console.log(`${machine_id} will finish in 1 minute`)
+                }          
+            })
+            
+        }, ((machine[0].workingtime)-(60*1000)));
+    
+         //machine stop process
         setTimeout(() => {
 
-            //machine stop process
-            const machine_id = request.query.machine_id ;
+           
+            
             var requestOptions: RequestInit = {
               method: 'POST',
               headers: { "secret_key": `${process.env.NEXT_SECRET_KEY}` },
