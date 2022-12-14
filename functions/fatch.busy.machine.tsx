@@ -60,7 +60,7 @@ export default function GetBusyMachine() {
             <strong>Status: </strong>{item.status}
           </li>
           <li>
-            <strong>Finish At: </strong>:{item.starttime} minute
+            <strong>Finish At: </strong>{item.stoptime}
           </li>
         </ul>
         

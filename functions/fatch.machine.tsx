@@ -3,7 +3,7 @@ import Image from "next/image";
 import { Data } from "../model/machine";
 import s from '../styles/fatchmachine.module.css'
 import machine from '../public/src/images/laundry-machine.png'
-
+import Start from "./start";
 
 
 
@@ -33,6 +33,8 @@ export default function Getmachine() {
   if (isLoading) return <p>loading ...</p>
   if (!data) return <p>No data</p>
 
+  Start;
+  
   return (
 
     <div className="row px-5 py-5">
@@ -84,24 +86,4 @@ export default function Getmachine() {
       }
     </div>
   )
- 
-}
-
-
-async function Start(id:string|undefined){
- const machine_id = id;
-  var requestOptions: RequestInit = {
-    method: 'POST',
-    headers: { "secret_key": `qLv0UkbT2g1lJthL5jgGzVneLSWqMS3x` },
-    redirect: 'follow'
-  };
-  console.log(requestOptions)
-  const url = `/api/machinestart?machine_id=${machine_id}`
-  console.log(url)
-  await fetch(url, requestOptions).then((res)=>{
-    
-    console.log(res)
-    
-  })
-    
 }

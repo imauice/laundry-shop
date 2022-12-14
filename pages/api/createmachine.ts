@@ -1,8 +1,10 @@
 import { connectToDatabase } from "../../lib/mongodb";
+import type { NextApiRequest, NextApiResponse } from 'next'
 
-export default async function handler(request, response) {
+export default async function handler(request:NextApiRequest, response:NextApiResponse ) {
 
   const worktime = Number(request.query.worktime)*60*1000 ;
+  const  createtime = new Date().toLocaleString('en-US', { timeZone: 'Asia/Jakarta' });
 
    const data = {
     id:request.query.machine_id,
@@ -10,10 +12,10 @@ export default async function handler(request, response) {
     price:request.query.price,
     workingtime:worktime,
     status:"idle",
-    create_time_stamp: (new Date())
+    create_time_stamp: createtime
    }
 
-    const { database } = await connectToDatabase();
+    const { database }:any = await connectToDatabase();
     const collection = database.collection(process.env.NEXT_ATLAS_COLLECTION);
     const checkExist = await collection.find({id:request.query.machine_id}).toArray();
  
