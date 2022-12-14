@@ -49,7 +49,7 @@ export default async function handler(request:NextApiRequest, response:NextApiRe
               headers: { "secret_key": `${process.env.NEXT_SECRET_KEY}` },
               redirect: 'follow'
             };
-            const url = `http://localhost:3000/api/machinestop?machine_id=${machine_id}`
+            const url = `https://laundry-shop-nine.vercel.app/api/machinestop?machine_id=${machine_id}`
          
             fetch(url, requestOptions).then((res)=>{
               
