@@ -44,9 +44,9 @@ export default async function handler(request, response) {
                 redirect: 'follow'
               };
           
-              fetch(`/api/machinestop?machine_id=${request.query.machine_id}`, requestOptions)
+             fetch(`/api/machinestop?machine_id=${request.query.machine_id}`, requestOptions)
 
-        }, ((machine[0].workingtime)-60000));
+        }, ((machine[0].workingtime)));
 
         response.status(200).json(result);
     }
