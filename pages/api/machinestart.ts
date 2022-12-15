@@ -10,7 +10,7 @@ export default async function handler(request: NextApiRequest, response: NextApi
 
     if (machine.length != 1
         || request.method != "POST"
-        || request.headers.secret_key != process.env.SECRET_KEY
+        || request.headers.secret_key != process.env.NEXT_SECRET_KEY
         || machine[0].status != "idle") {
 
         if (machine[0].status == "busy") {
