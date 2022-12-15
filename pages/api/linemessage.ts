@@ -14,7 +14,7 @@ export default function handler(
 
         var myHeaders = new Headers();
         myHeaders.append("Content-Type", "application/json");
-        myHeaders.append("Authorization", `Bearer {"${process.env.NEXT_LINE_TOKEN}"}`);
+        myHeaders.append("Authorization", `Bearer {${process.env.NEXT_LINE_TOKEN}}`);
 
         var raw = JSON.stringify({
             "messages": [
@@ -35,8 +35,10 @@ export default function handler(
 
         fetch("https://api.line.me/v2/bot/message/broadcast", requestOptions)
             .then(response => {
-                response.text();
-                res.send('messages send')
+                if(response.statusText == "OK"){
+
+                    res.send('messages text: '+message)
+                }
             })
             .catch(error => console.log('error', error));
     }
