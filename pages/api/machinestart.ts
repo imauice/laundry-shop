@@ -56,7 +56,6 @@ export default async function handler(request: NextApiRequest, response: NextApi
             fetch(`https://laundry-shop-nine.vercel.app/api/linemessage?message=${message}`, requestOptions)
                 .then(response => {
                     if(response.statusText=="OK"){
-                        window.location.reload();
                         console.log("message ",message," sending to line group")
                     }
                 })
