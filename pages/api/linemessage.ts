@@ -6,7 +6,7 @@ export default function handler(
 ) {
 
     const message = req.query.message;
-
+    console.log("line message: ",message);
     if (req.headers.secret_key != process.env.NEXT_SECRET_KEY) {
         res.end("Welcome to laundry api. This is private api. Thank you.")
     }

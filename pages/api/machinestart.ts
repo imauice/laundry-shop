@@ -51,9 +51,10 @@ export default async function handler(request: NextApiRequest, response: NextApi
             };
 
             const message = `${machine_id} service will finish in 1 minute`
+            console.log(message)
 
             fetch(`https://laundry-shop-nine.vercel.app/api/linemessage?message=${message}`, requestOptions)
-                .then(response => console.log(response))
+                .then(response => response.text())
                 .catch(error => console.log('error', error));
 
         }, ((machine[0].workingtime) - (60 * 1000)));
