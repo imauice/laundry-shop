@@ -34,8 +34,10 @@ export default function handler(
         };
 
         fetch("https://api.line.me/v2/bot/message/broadcast", requestOptions)
-            .then(response => response.text())
-            .then(result => console.log(result))
+            .then(response => {
+                response.text();
+                res.send('messages send')
+            })
             .catch(error => console.log('error', error));
     }
 }
