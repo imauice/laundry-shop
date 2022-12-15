@@ -55,7 +55,7 @@ export default async function handler(request: NextApiRequest, response: NextApi
 
             const message = `${machine_id} service will finish in 1 minute`
 
-            fetch(`https://laundry-shop-nine.vercel.app//api/linemessage?message=${message}`, requestOptions)
+            fetch(`https://laundry-shop-nine.vercel.app/api/linemessage?message=${message}`, requestOptions)
                 .then(response => console.log(response))
                 .catch(error => console.log('error', error));
 
