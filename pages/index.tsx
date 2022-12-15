@@ -17,8 +17,8 @@ export  const  getServerSideProps: GetServerSideProps<{ idlemachine: Data[],busy
     redirect: 'follow'
   };
 
- const idle = await  fetch(`http://localhost:3000/api/machinelist?status=idle`, requestOptions)
- const busy = await  fetch(`http://localhost:3000/api/machinelist?status=busy`, requestOptions)
+ const idle = await  fetch(`https://laundry-shop-nine.vercel.app/api/machinelist?status=idle`, requestOptions)
+ const busy = await  fetch(`https://laundry-shop-nine.vercel.app/api/machinelist?status=busy`, requestOptions)
   const idlemachine: Data[] = await idle.json()
   const busymachine: Data[] = await busy.json()
   return {
