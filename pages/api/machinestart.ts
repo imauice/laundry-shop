@@ -4,7 +4,7 @@ import type { NextApiRequest, NextApiResponse } from 'next'
 export default async function handler(request: NextApiRequest, response: NextApiResponse) {
 
     const { database }: any = await connectToDatabase();
-    const collection = database.collection(process.env.NEXT_ATLAS_COLLECTION);
+    const collection = database.collection(process.env.NEXT_PUBLIC_ATLAS_COLLECTION);
     const machine = await collection.find({ id: request.query.machine_id }).toArray();
 
 
