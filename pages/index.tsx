@@ -11,9 +11,11 @@ import Banner from '../component/banner'
 import MidleStrip from '../component/midlestrip'
 
 export  const  getServerSideProps: GetServerSideProps<{ idlemachine: Data[],busymachine:Data[] }> = async () => {
+
+  const public_key = process.env.NEXT_PUBLIC_KEY
   var requestOptions: RequestInit = {
     method: 'POST',
-    headers: { "public_key": `${process.env.NEXT_PUBLIC_KEY}` },
+    headers: { "public_key": `${public_key}` },
     redirect: 'follow'
   };
 

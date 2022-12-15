@@ -43,10 +43,10 @@ export default async function handler(request: NextApiRequest, response: NextApi
 
         //send line message
         setTimeout(() => {
-
+            const line_token = process.env.NEXT_LINE_TOKEN
             var requestOptions:RequestInit = {
                 method: 'POST',
-                headers: {"secret_key": `${process.env.NEXT_PUBLIC_SECRET_KEY}`},
+                headers: {"secret_key": `${line_token}`},
                 redirect: 'follow'
             };
 
@@ -65,10 +65,10 @@ export default async function handler(request: NextApiRequest, response: NextApi
 
         //machine stop process
         setTimeout(() => {
-
+                const private_key = process.env.NEXT_SECRET_KEY
             var requestOptions: RequestInit = {
                 method: 'POST',
-                headers: { "secret_key": `${process.env.NEXT_SECRET_KEY}` },
+                headers: { "secret_key": `${private_key}` },
                 redirect: 'follow'
             };
             const url = `https://laundry-shop-nine.vercel.app/api/machinestop?machine_id=${machine_id}`
