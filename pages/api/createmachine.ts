@@ -16,7 +16,7 @@ export default async function handler(request:NextApiRequest, response:NextApiRe
    }
 
     const { database }:any = await connectToDatabase();
-    const collection = database.collection(process.env.NEXT_PUBLIC_ATLAS_COLLECTION);
+    const collection = database.collection(process.env.NEXT_ATLAS_COLLECTION);
     const checkExist = await collection.find({id:request.query.machine_id}).toArray();
  
   
