@@ -9,7 +9,7 @@ export default async function handler(request:NextApiRequest, response:NextApiRe
 
     if (machine.length != 1 
         || request.method != "POST" 
-        || request.headers.secret_key != process.env.NEXT_SECRET_KEY
+        || request.headers.secret_key != process.env.NEXT_PUBLIC_SECRET_KEY
         || machine[0].status !="busy") {
 
             if(machine[0].status =="idle"){

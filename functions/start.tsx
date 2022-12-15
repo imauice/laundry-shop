@@ -1,10 +1,10 @@
 export default function Start(id:string|undefined){
 
-
+console.log(process.env.NEXT_PUBLIC_START_KEY)
        const machine_id = id;
     var requestOptions: RequestInit = {
       method: 'POST',
-      headers: { "secret_key": `${process.env.NEXT_PUBLIC_SECRET_KEY}` },
+      headers: { "secret_key": `""`},
       redirect: 'follow'
     };
    
