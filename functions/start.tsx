@@ -12,6 +12,7 @@ export default function Start(id:string|undefined){
     fetch(url, requestOptions).then((res)=>{
       if(res.statusText == 'OK'){
           console.log(`${machine_id} is started`)
+          window.location.reload()
       }
       
       

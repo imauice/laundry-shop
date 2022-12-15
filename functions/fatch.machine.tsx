@@ -9,7 +9,7 @@ import Start from "./start";
 
 export default function Getmachine() {
   const [data, setData] = useState<Data[]>();
-  const [isLoading, setLoading] = useState(false);
+  const [isLoading, setLoading] = useState(true);
 
 
   useEffect(() => {

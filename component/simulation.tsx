@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import s from '../styles/fatchmachine.module.css'
+
 
 export default function Simulation() {
     const [count, setCount] = useState(0);

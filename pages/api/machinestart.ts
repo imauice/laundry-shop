@@ -54,7 +54,12 @@ export default async function handler(request: NextApiRequest, response: NextApi
             console.log(message)
 
             fetch(`https://laundry-shop-nine.vercel.app/api/linemessage?message=${message}`, requestOptions)
-                .then(response => response.text())
+                .then(response => {
+                    if(response.statusText=="OK"){
+                        window.location.reload();
+                        console.log("message ",message," sending to line group")
+                    }
+                })
                 .catch(error => console.log('error', error));
 
         }, ((machine[0].workingtime) - (60 * 1000)));
