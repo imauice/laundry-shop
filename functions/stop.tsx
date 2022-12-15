@@ -5,7 +5,7 @@ export default function Stop(id:string|undefined){
     const machine_id = id;
  var requestOptions: RequestInit = {
    method: 'POST',
-   headers: { "secret_key": `qLv0UkbT2g1lJthL5jgGzVneLSWqMS3x` },
+   headers: { "secret_key": `${process.env.NEXT_SECRET_KEY}` },
    redirect: 'follow'
  };
  console.log(requestOptions)

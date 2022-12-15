@@ -15,6 +15,6 @@
     "jsx": "preserve",
     "incremental": true
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "pages/api/createmachine.ts", "functions/stop.tsx"],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "pages/api/createmachine.ts", "functions/stop.tsx", "pages/abount.tsx", "pages/index.tsx"],
   "exclude": ["node_modules"]
 }
