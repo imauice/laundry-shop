@@ -43,10 +43,10 @@ export default async function handler(request: NextApiRequest, response: NextApi
 
         //send line message
         setTimeout(() => {
-            const line_token = process.env.NEXT_LINE_TOKEN
+            const secret_key = process.env.NEXT_SECRET_KEY
             var requestOptions:RequestInit = {
                 method: 'POST',
-                headers: {"secret_key": `${line_token}`},
+                headers: {"secret_key": `${secret_key}`},
                 redirect: 'follow'
             };
 

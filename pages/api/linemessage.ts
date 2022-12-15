@@ -4,7 +4,7 @@ export default function handler(
     req: NextApiRequest,
     res: NextApiResponse<String>
 ) {
-
+    
     const message = req.query.message;
     console.log("line message: ",message);
     if (req.headers.secret_key != process.env.NEXT_SECRET_KEY) {
@@ -12,9 +12,10 @@ export default function handler(
     }
     else {
 
+        const line_token =process.env.NEXT_LINE_TOKEN;
         var myHeaders = new Headers();
         myHeaders.append("Content-Type", "application/json");
-        myHeaders.append("Authorization", `Bearer {${process.env.NEXT_LINE_TOKEN}}`);
+        myHeaders.append("Authorization", `Bearer {${line_token}}`);
 
         var raw = JSON.stringify({
             "messages": [
