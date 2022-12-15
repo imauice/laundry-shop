@@ -7,14 +7,14 @@ export default function handler(
 
     const message = req.query.message;
     console.log("line message: ",message);
-    if (req.headers.secret_key != process.env.NEXT_SECRET_KEY) {
+    if (req.headers.secret_key != process.env.NEXT_PUBLIC_SECRET_KEY) {
         res.end("Welcome to laundry api. This is private api. Thank you.")
     }
     else {
 
         var myHeaders = new Headers();
         myHeaders.append("Content-Type", "application/json");
-        myHeaders.append("Authorization", `Bearer {${process.env.NEXT_LINE_TOKEN}}`);
+        myHeaders.append("Authorization", `Bearer {${process.env.NEXT_PUBLIC_LINE_TOKEN}}`);
 
         var raw = JSON.stringify({
             "messages": [
