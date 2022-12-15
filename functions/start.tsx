@@ -4,7 +4,7 @@ export default async function Start(id:string|undefined){
        const machine_id = id;
     var requestOptions: RequestInit = {
       method: 'POST',
-      headers: { "secret_key": `${process.env.NEXT_SECRET_KEY}` },
+      headers: { "secret_key": `${process.env.NEXT_PUBLIC_SECRET_KEY}` },
       redirect: 'follow'
     };
    
