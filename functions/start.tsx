@@ -8,12 +8,13 @@ export default async function Start(id:string|undefined){
       redirect: 'follow'
     };
    
-    const url = `https://laundry-shop-nine.vercel.app/api/machinestart?machine_id=${machine_id}`
-   await fetch(url, requestOptions).then((res)=>{
+    const url = `https://laundry-shop-nine.vercel.app/api/machinestart?machine_id=${machine_id}`;
+
+  await fetch(url, requestOptions).then((res)=>{
       if(res.statusText == 'OK'){
           console.log(`${machine_id} is started`);
           location.reload();
       }
-    })     
+    }).catch(error => console.log('error', error));     
   }
   

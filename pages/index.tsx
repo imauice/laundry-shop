@@ -30,7 +30,7 @@ export  const  getServerSideProps: GetServerSideProps<{ idlemachine: Data[],busy
 
 function GetIdleMachine({ idlemachine,busymachine }: InferGetServerSidePropsType<typeof getServerSideProps>) {
 
-  Start;
+  Start
 
   return (
 
