@@ -11,14 +11,9 @@ export default function Start(id:string|undefined){
     const url = `/api/machinestart?machine_id=${machine_id}`
     fetch(url, requestOptions).then((res)=>{
       if(res.statusText == 'OK'){
-          console.log(`${machine_id} is started`)
-          window.location.reload()
+          console.log(`${machine_id} is started`);
+          location.reload();
       }
-      
-      
-    })
-   
-  
-      
+    })     
   }
   
