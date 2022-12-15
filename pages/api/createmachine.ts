@@ -22,7 +22,7 @@ export default async function handler(request:NextApiRequest, response:NextApiRe
   
     if(request.method != 'POST' 
     || checkExist.length>0
-    || request.headers.secret_key != process.env.NEXT_PUBLIC_SECRET_KEY
+    || request.headers.secret_key != process.env.NEXT_SECRET_KEY
       ) {
       response.end("Welcome to my laundry api. This is private api. Thank you");
       return

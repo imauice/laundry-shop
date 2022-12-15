@@ -68,7 +68,7 @@ export default async function handler(request: NextApiRequest, response: NextApi
 
             var requestOptions: RequestInit = {
                 method: 'POST',
-                headers: { "secret_key": `${process.env.NEXT_PUBLIC_SECRET_KEY}` },
+                headers: { "secret_key": `${process.env.NEXT_SECRET_KEY}` },
                 redirect: 'follow'
             };
             const url = `https://laundry-shop-nine.vercel.app/api/machinestop?machine_id=${machine_id}`

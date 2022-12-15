@@ -1,4 +1,4 @@
-export default async function Start(id:string|undefined){
+export default function Start(id:string|undefined){
 
 
        const machine_id = id;
@@ -10,7 +10,7 @@ export default async function Start(id:string|undefined){
    
     const url = `/api/machinestart?machine_id=${machine_id}`;
 
-  await fetch(url, requestOptions).then((res)=>{
+   fetch(url, requestOptions).then((res)=>{
       if(res.statusText == 'OK'){
           console.log(`${machine_id} is started`);
           location.reload();

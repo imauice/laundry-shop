@@ -17,10 +17,11 @@ export  const  getServerSideProps: GetServerSideProps<{ idlemachine: Data[],busy
     redirect: 'follow'
   };
 
- const idle = await  fetch(`https://laundry-shop-nine.vercel.app/api/machinelist?status=idle`, requestOptions)
- const busy = await  fetch(`https://laundry-shop-nine.vercel.app/api/machinelist?status=busy`, requestOptions)
-  const idlemachine: Data[] = await idle.json()
-  const busymachine: Data[] = await busy.json()
+ const idle = await  fetch(`https://laundry-shop-nine.vercel.app/api/machinelist?status=idle`, requestOptions);
+ const busy = await  fetch(`https://laundry-shop-nine.vercel.app/api/machinelist?status=busy`, requestOptions);
+
+  const idlemachine: Data[] = await idle.json();
+  const busymachine: Data[] = await busy.json();
   return {
     props: {
       idlemachine,busymachine
@@ -30,7 +31,7 @@ export  const  getServerSideProps: GetServerSideProps<{ idlemachine: Data[],busy
 
 function GetIdleMachine({ idlemachine,busymachine }: InferGetServerSidePropsType<typeof getServerSideProps>) {
 
-  Start
+  Start;
 
   return (
 
