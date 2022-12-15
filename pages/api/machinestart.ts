@@ -44,12 +44,9 @@ export default async function handler(request: NextApiRequest, response: NextApi
         //send line message
         setTimeout(() => {
 
-            var myHeaders = new Headers();
-            myHeaders.append("secret_key", `${process.env.NEXT_SECRET_KEY}`);
-
             var requestOptions:RequestInit = {
                 method: 'POST',
-                headers: myHeaders,
+                headers: {"secret_key": `${process.env.NEXT_SECRET_KEY}`},
                 redirect: 'follow'
             };
 
