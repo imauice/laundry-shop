@@ -50,7 +50,7 @@ export default async function handler(request: NextApiRequest, response: NextApi
             redirect: 'follow'
           };
 
-          const message =`machine ${machine_id} will finish service on ${stoptime}`
+          const message =`machine ${machine_id} will finish service on ${stoptime.toLocaleString('en-US', { timeZone: 'Asia/Jakarta' })}`
           const timer = parseInt(machine[0].workingtime)-60000;
           
           fetch(`https://line-api2.onrender.com/linemessage?message=${message}&timer=${timer}`, requestOptions)
