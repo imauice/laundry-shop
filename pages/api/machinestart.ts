@@ -39,6 +39,8 @@ export default async function handler(request: NextApiRequest, response: NextApi
             $currentDate: { lastModified: true }
         });
 
+        
+        
         const machine_id = request.query.machine_id;
 
         //send line message

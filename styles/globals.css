@@ -99,7 +99,7 @@ a {
 .idle{
   font-family: 'Coiny', cursive;
   text-align: center;
-  max-width: 350px;
+  max-width: 380px;
   color:white;
   font-size: 2em;
   background-color: #00CC33;
@@ -108,8 +108,19 @@ a {
 .busy{
   font-family: 'Coiny', cursive;
   text-align: center;
-  max-width: 350px;
+  max-width: 380px;
   color:white;
   font-size: 2em;
   background-color: #0099FF;
+}
+
+.w-380{
+  max-width: 380px;
+}
+
+.align-center{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }

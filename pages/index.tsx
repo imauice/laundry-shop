@@ -9,6 +9,8 @@ import styles from '../styles/Home.module.css'
 import NavbarMain from '../component/nav'
 import Banner from '../component/banner'
 import MidleStrip from '../component/midlestrip'
+import asset from '../public/src/images/asset.png'
+import  { useRouter } from 'next/router';
 
 export  const  getServerSideProps: GetServerSideProps<{ idlemachine: Data[],busymachine:Data[] }> = async () => {
 
@@ -33,7 +35,14 @@ export  const  getServerSideProps: GetServerSideProps<{ idlemachine: Data[],busy
 
 function GetIdleMachine({ idlemachine,busymachine }: InferGetServerSidePropsType<typeof getServerSideProps>) {
 
-  Start;
+  const router = useRouter()
+  const StartMachine = (id:string | undefined) =>{
+    Start(id);
+    router.replace(router.asPath);
+  }
+  const Reload = () =>{
+    router.replace(router.asPath);
+  }
 
   return (
 
@@ -44,8 +53,30 @@ function GetIdleMachine({ idlemachine,busymachine }: InferGetServerSidePropsType
         <MidleStrip/>
 
     <section>
-    <h1 className='idle py-2'>Idle Machine</h1>
+      <div className='row'>
+      <div className='col-lg-5 align-center'>
+        <h1 className='idle py-2 w-100'>Idle Machine</h1>
+    <div className='btn btn-primary bg-info d-block w-380 w-100'>
+      <a href="https://line.me/R/ti/p/@144gxzrn">Add Line to get service report</a>
+      </div>
+        <h4 className='btn btn-primary d-block w-380 w-100' onClick={Reload}>Click reload idle machine data</h4>
+      </div>
+      <div className='col-lg-7 d-none d-md-block'>
+      <Image
+            alt="laundry shop logo"
+            src={asset}
+            width={410}
+            height={157}
+            style={{
+              width: '100%',
+              maxWidth: '350px',
+              height: 'auto',
+            }}
+          />
+      </div>
+      </div>
     <div className="row px-5 py-5">
+    
 
       {idlemachine.map((item, index) => <div id={item.id} className="col-6 col-md-2 px-3 py-3" key={index}>
 
@@ -65,7 +96,7 @@ function GetIdleMachine({ idlemachine,busymachine }: InferGetServerSidePropsType
             
             <div className={s.simulate}>
             <h5>Simulation</h5>
-            <button className='btn btn-primary' onClick={()=>Start(item.id)}>
+            <button className='btn btn-primary' onClick={()=>StartMachine(item.id)}>
                 Put coin to start Machine
             </button>
             </div>
@@ -94,7 +125,10 @@ function GetIdleMachine({ idlemachine,busymachine }: InferGetServerSidePropsType
       }
     </div>
     {/* busy machine  */}
-    <h1 className='busy py-2'>Busy Machine</h1>
+    <div className='col-lg-5 align-center'>
+    <h1 className='busy py-2 w-100'>Busy Machine</h1>
+    </div>
+
     <div className="row px-5 py-5">
       
     {busymachine.map((item, index) => <div id={item.id} className="col-6 col-md-2 px-3 py-3" key={index}>
@@ -141,5 +175,6 @@ function GetIdleMachine({ idlemachine,busymachine }: InferGetServerSidePropsType
   )
   
 }
+
 
 export default GetIdleMachine
