@@ -44,45 +44,26 @@ export default async function handler(request: NextApiRequest, response: NextApi
         const machine_id = request.query.machine_id;
 
         //send line message
-        setTimeout(() => {
-            const secret_key = process.env.NEXT_SECRET_KEY
-            var requestOptions:RequestInit = {
-                method: 'POST',
-                headers: {"secret_key": `${secret_key}`},
-                redirect: 'follow'
-            };
+  
+        var requestOptions:RequestInit = {
+            method: 'POST',
+            redirect: 'follow'
+          };
 
-            const message = `${machine_id} service will finish in 1 minute`
-            console.log(message)
-
-            fetch(`https://laundry-shop-nine.vercel.app/api/linemessage?message=${message}`, requestOptions)
-                .then(response => {
-                    if(response.statusText=="OK"){
-                        console.log("message ",message," sending to line group")
-                    }
-                })
-                .catch(error => console.log('error', error));
-
-        }, ((machine[0].workingtime) - (60 * 1000)));
+          const message =`machine ${machine_id} will finish service on ${stoptime}`
+          const timer = parseInt(machine[0].workingtime)-60000;
+          
+          fetch(`https://line-api2.onrender.com/linemessage?message=${message}&timer=${timer}`, requestOptions)
+            .then(response => response.text())
+            .then(result => console.log(result))
+            .catch(error => console.log('error', error));
 
         //machine stop process
-        setTimeout(() => {
-                const private_key = process.env.NEXT_SECRET_KEY
-            var requestOptions: RequestInit = {
-                method: 'POST',
-                headers: { "secret_key": `${private_key}` },
-                redirect: 'follow'
-            };
-            const url = `https://laundry-shop-nine.vercel.app/api/machinestop?machine_id=${machine_id}`
-
-            fetch(url, requestOptions).then((res) => {
-
-                if (res.statusText == 'OK') {
-                    console.log(`${machine_id} is finish operation`)
-                }
-            })
-
-        }, ((machine[0].workingtime)));
+        const cycletime = parseInt(machine[0].workingtime);
+        fetch(`https://line-api2.onrender.com/laundrymachine/stop?machine=${machine_id}&timer=${cycletime}`, requestOptions)
+            .then(response => response.text())
+            .then(result => console.log(result))
+            .catch(error => console.log('error', error));
 
         response.status(200).json(result);
     }
