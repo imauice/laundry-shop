@@ -53,14 +53,14 @@ export default async function handler(request: NextApiRequest, response: NextApi
           const message =`machine ${machine_id} will finish service on ${stoptime.toLocaleString('en-US', { timeZone: 'Asia/Jakarta' })}`
           const timer = parseInt(machine[0].workingtime)-60000;
           
-          fetch(`https://line-api2.onrender.com/linemessage?message=${message}&timer=${timer}`, requestOptions)
+        await  fetch(`https://line-api2.onrender.com/linemessage?message=${message}&timer=${timer}`, requestOptions)
             .then(response => response.text())
             .then(result => console.log(result))
             .catch(error => console.log('error', error));
 
         //machine stop process
         const cycletime = parseInt(machine[0].workingtime);
-        fetch(`https://line-api2.onrender.com/laundrymachine/stop?machine=${machine_id}&timer=${cycletime}`, requestOptions)
+       await fetch(`https://line-api2.onrender.com/laundrymachine/stop?machine=${machine_id}&timer=${cycletime}`, requestOptions)
             .then(response => response.text())
             .then(result => console.log(result))
             .catch(error => console.log('error', error));
