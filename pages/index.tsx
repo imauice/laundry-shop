@@ -13,7 +13,7 @@ import asset from '../public/src/images/asset.png'
 import  { useRouter } from 'next/router';
 
 export  const  getServerSideProps: GetServerSideProps<{ idlemachine: Data[],busymachine:Data[] }> = async () => {
-
+  
   const public_key = process.env.NEXT_PUBLIC_KEY
   var requestOptions: RequestInit = {
     method: 'POST',
@@ -35,10 +35,13 @@ export  const  getServerSideProps: GetServerSideProps<{ idlemachine: Data[],busy
 
 function GetIdleMachine({ idlemachine,busymachine }: InferGetServerSidePropsType<typeof getServerSideProps>) {
 
+ 
+  
   const router = useRouter()
-  const StartMachine = (id:string | undefined) =>{
-    Start(id);
+  const StartMachine =  (id:string | undefined) =>{
+     Start(id);
     router.replace(router.asPath);
+  
   }
   const Reload = () =>{
     router.replace(router.asPath);
