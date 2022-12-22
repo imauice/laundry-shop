@@ -40,7 +40,7 @@ function GetIdleMachine({ idlemachine,busymachine }: InferGetServerSidePropsType
   const router = useRouter()
   const StartMachine =  (id:string | undefined) =>{
      Start(id);
-    router.replace(router.asPath);
+    //router.replace(router.asPath);
   
   }
   const Reload = () =>{
