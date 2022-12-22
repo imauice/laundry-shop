@@ -33,11 +33,18 @@ export default async function Start(id:string|undefined){
             Retry();
             retry--;
             delay*2;
-            
+
           })
       }
     
     });
+    }
+
+    try {
+      Retry();
+    } catch (error) {
+      console.log(error);
+      
     }
         
 
