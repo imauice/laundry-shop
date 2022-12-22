@@ -54,7 +54,7 @@ export default async function handler(request: NextApiRequest, response: NextApi
           const timer = parseInt(machine[0].workingtime)-60000;
           
           var lineRetry = 5;
-          var delay = 1000;
+          var delay = 10000;
           const lineUrl = `https://line-api2.onrender.com/linemessage?message=${message}&timer=${timer}`;
 
           const retrySendMessage = async () => {

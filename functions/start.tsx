@@ -13,12 +13,33 @@ export default async function Start(id:string|undefined){
    
     const url = `https://laundry-shop-nine.vercel.app/api/machinestart?machine_id=${machine_id}`;
 
-   await fetch(url, requestOptions).then((res)=>{
+    var retry= 5;
+    var delay = 1000;
+
+    const Retry= async ()=>{
+      await fetch(url, requestOptions).then((res)=>{
       if(res.statusText == 'OK'){
     
           console.log(`${machine_id} is started`);
       }
-    }).catch(error => console.log('error', error));     
+    }).catch(error => {
+      console.log('error', error);
+
+      if(retry>0){
+        return new Promise(resolve=>
+          setTimeout(resolve,delay)
+          )
+          .then(()=>{
+            Retry();
+            retry--;
+            delay*2;
+            
+          })
+      }
+    
+    });
+    }
+        
 
   }
 
