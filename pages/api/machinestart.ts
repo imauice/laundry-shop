@@ -53,10 +53,35 @@ export default async function handler(request: NextApiRequest, response: NextApi
           const message =`machine ${machine_id} will finish service on ${stoptime.toLocaleString('en-US', { timeZone: 'Asia/Jakarta' })}`
           const timer = parseInt(machine[0].workingtime)-60000;
           
-        await  fetch(`https://line-api2.onrender.com/linemessage?message=${message}&timer=${timer}`, requestOptions)
-            .then(response => response.text())
-            .then(result => console.log(result))
-            .catch(error => console.log('error', error));
+          var lineRetry = 5;
+          var delay = 1000;
+          const lineUrl = `https://line-api2.onrender.com/linemessage?message=${message}&timer=${timer}`;
+
+          const retrySendMessage = async () => {
+              await  fetch(lineUrl, requestOptions)
+              .then(response => response.text())
+              .then(result => console.log(result))
+              .catch(error => {
+                  console.log('error', error);
+                  if(lineRetry>0){
+                      return new Promise(resolve =>
+                        
+                        setTimeout(resolve,delay))
+                        
+                        .then(()=>{
+
+                            retrySendMessage();
+                            lineRetry --;
+                            delay*2
+                        })
+                    }
+                });
+            }
+
+            try {
+                retrySendMessage();
+            } catch (error) { 
+            }
 
         //machine stop process
         const cycletime = parseInt(machine[0].workingtime);
