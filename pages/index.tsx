@@ -39,12 +39,16 @@ function GetIdleMachine({ idlemachine,busymachine }: InferGetServerSidePropsType
   
   const router = useRouter()
   const StartMachine =  (id:string | undefined) =>{
-     Start(id);
-    //router.replace(router.asPath);
-  
+     
+    return new Promise((resolve) =>
+      setTimeout(resolve,1000) 
+      ).then(()=>{
+        Start(id);
+      }).then(()=>Reload());
   }
+
   const Reload = () =>{
-    router.replace(router.asPath);
+    location.reload();
   }
 
   return (
